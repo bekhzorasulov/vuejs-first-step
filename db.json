@@ -1,0 +1,12 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "new post",
+      "body": "hello world",
+      "author": "Bekhzod Rasulov",
+      "created_on": "11/22/2024",
+      "is_saved": false
+    }
+  ]
+}

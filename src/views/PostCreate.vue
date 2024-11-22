@@ -1,8 +1,11 @@
 <script setup>
 import { reactive, computed } from 'vue'
-import MyWrapper from '@/components/MyWrapper.vue'
 import { usePostsStore } from '@/stores/posts'
+import { useRouter } from 'vue-router'
 
+import MyWrapper from '@/components/MyWrapper.vue'
+
+const router = useRouter()
 const postStore = usePostsStore()
 
 const post = reactive({
@@ -16,20 +19,25 @@ const isFromInvalid = computed(() => {
 
 const submit = () => {
   postStore.addPost(post)
+  router.push({ name: 'home' })
 }
 </script>
 
 <template>
   <MyWrapper>
-    <form @submit.prevent="submit">
+    <form id="new-post" @submit.prevent="submit">
       <h3>Create a new posts</h3>
       <div>
-        <label>Post Title</label>
-        <input type="text" v-model="post.title" />
+        <label
+          >Post Title
+          <input type="text" v-model="post.title" />
+        </label>
       </div>
       <div>
-        <label>Post body</label>
-        <textarea name="7" v-model="post.body"></textarea>
+        <label
+          >Post body
+          <textarea name="7" v-model="post.body"></textarea>
+        </label>
       </div>
       <div>
         <button :disabled="isFromInvalid">Add</button>
